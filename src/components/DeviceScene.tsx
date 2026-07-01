@@ -14,11 +14,15 @@ function PhoneModel() {
         <RoundedBox args={[2.1, 3.8, 0.18]} radius={0.18} smoothness={8}>
           <meshStandardMaterial color="#101c17" metalness={0.48} roughness={0.28} />
         </RoundedBox>
-        <RoundedBox args={[1.88, 3.42, 0.04]} radius={0.13} smoothness={8} position={[0, 0, 0.12]}>
-          <meshBasicMaterial map={screenTexture} toneMapped={false} />
+        <RoundedBox args={[1.88, 3.42, 0.045]} radius={0.13} smoothness={8} position={[0, 0, 0.115]}>
+          <meshStandardMaterial color="#050807" roughness={0.42} />
         </RoundedBox>
-        <mesh position={[0, 1.52, 0.16]}>
-          <boxGeometry args={[0.58, 0.12, 0.03]} />
+        <mesh position={[0, 0, 0.15]}>
+          <planeGeometry args={[1.72, 3.16]} />
+          <meshBasicMaterial map={screenTexture} toneMapped={false} />
+        </mesh>
+        <mesh position={[0, 1.5, 0.18]}>
+          <boxGeometry args={[0.58, 0.12, 0.025]} />
           <meshStandardMaterial color="#050807" roughness={0.4} />
         </mesh>
       </group>
