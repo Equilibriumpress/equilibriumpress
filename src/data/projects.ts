@@ -1,28 +1,36 @@
+import { waymarkedTrailsMap } from '../assets/waymarkedTrailsMap';
+
 export type Project = {
   title: string;
   type: string;
   description: string;
   accent: string;
+  image?: string;
+  metrics?: string[];
 };
 
 export const projects: Project[] = [
   {
     title: 'Waymarked Trails Explorer',
     type: 'iOS route app',
-    description: 'Kaartlagen, routehiërarchie, etappes, detailweergave en een snelle tap-flow op de kaart.',
+    description: 'Een interactieve route-app met Europese wandel- en fietsroutes, kaartlagen, zoekflow, favorieten en detailpagina’s voor routes en etappes.',
     accent: 'route',
+    image: waymarkedTrailsMap,
+    metrics: ['Apple Maps + OSM', 'Route layers', 'iOS'],
   },
   {
     title: 'Map Poster Builder',
     type: 'Design tool',
-    description: 'Thema’s, GPX-routes, export en posterwaardige kaartstijlen voor print en social.',
+    description: 'Kaartposters met thema’s, GPX-routes, export en posterwaardige kaartstijlen voor print en social.',
     accent: 'poster',
+    metrics: ['GPX', 'SVG export', 'Print'],
   },
   {
     title: 'Père-Lachaise Guide',
     type: 'iOS travel guide',
     description: 'Een compacte gids met kaart, route, biografieën, Wikimedia-afbeeldingen en detailpagina’s.',
     accent: 'guide',
+    metrics: ['Wikimedia', 'Map guide', 'Audio'],
   },
 ];
 
