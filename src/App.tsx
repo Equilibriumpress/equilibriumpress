@@ -9,15 +9,23 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+function HeroWord({ children, dim = false, delay = 0 }: { children: string; dim?: boolean; delay?: number }) {
+  return (
+    <span className="word-wrap">
+      <span className={dim ? 'dimmed' : ''} style={{ animationDelay: `${delay}s` }}>{children}</span>
+    </span>
+  );
+}
+
 export default function App() {
   return (
     <>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Equilibriumpress home">
+      <header className="site-header animate-fade-in">
+        <a className="brand animate-slide-left" href="#top" aria-label="Equilibriumpress home">
           <span>EP</span>
           Equilibriumpress
         </a>
-        <nav aria-label="Hoofdnavigatie">
+        <nav aria-label="Hoofdnavigatie" className="animate-fade-in delay-400">
           <a href="#apps">Apps</a>
           <a href="#proces">Proces</a>
           <a href="#werk">Werk</a>
@@ -34,56 +42,55 @@ export default function App() {
             variants={fadeUp}
             transition={{ duration: 0.7 }}
           >
-            <p className="eyebrow">Premium app studio</p>
-            <h1>Websites en apps die snel live gaan.</h1>
+            <p className="eyebrow">Portfolio for map-first apps</p>
+            <h1 className="hero-title" aria-label="Maps routes and apps built for exploration">
+              <span className="hero-line">
+                <HeroWord delay={0.25}>Maps,</HeroWord>
+                <HeroWord delay={0.35}>routes</HeroWord>
+              </span>
+              <span className="hero-line">
+                <HeroWord delay={0.45} dim>and</HeroWord>
+                <HeroWord delay={0.55}>apps</HeroWord>
+              </span>
+              <span className="hero-line">
+                <HeroWord delay={0.65}>built</HeroWord>
+                <HeroWord delay={0.75} dim>for</HeroWord>
+                <HeroWord delay={0.85}>exploration.</HeroWord>
+              </span>
+            </h1>
             <p className="intro">
-              Equilibriumpress bouwt compacte digitale producten met kaarten, routes, 3D-presentatie en een publicatieflow via GitHub Pages, Vercel, TestFlight en App Store.
+              Equilibriumpress bouwt iOS-apps en webtools voor routes, kaarten, reisgidsen en publicatieflows.
             </p>
-            <div className="actions">
+            <div className="actions animate-fade-up delay-600">
               <a className="button primary" href="#werk">Bekijk projecten</a>
               <a className="button secondary" href="https://github.com/Equilibriumpress/equilibriumpress">Open GitHub</a>
-            </div>
-            <div className="stats" aria-label="Kernpunten">
-              <div><strong>React</strong><span>Vite + TypeScript</span></div>
-              <div><strong>3D</strong><span>React Three Fiber</span></div>
-              <div><strong>Pages</strong><span>GitHub Actions</span></div>
             </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.12 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             <DeviceScene />
           </motion.div>
         </section>
 
-        <section id="apps" className="section-shell">
-          <SectionHeader
-            eyebrow="Focus"
-            title="Een moderne basis voor app showcases."
-            text="De site is opgebouwd als productstudio: visueel sterk, snel aanpasbaar en klaar voor echte screenshots, cases en links."
-          />
-          <div className="feature-grid">
-            {['3D hero', 'Motion design', 'Responsive cards'].map((item, index) => (
-              <motion.article
-                className="feature-card"
-                key={item}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-              >
-                <span className="feature-index">0{index + 1}</span>
-                <h3>{item}</h3>
-                <p>
-                  {index === 0 && 'Een interactieve 3D-preview in de hero, geschikt voor apppresentatie en productgevoel.'}
-                  {index === 1 && 'Subtiele animaties met Framer Motion, zonder zware visuele ruis.'}
-                  {index === 2 && 'Sterke mobile layout, nette spacing en componenten die je makkelijk uitbreidt.'}
-                </p>
-              </motion.article>
-            ))}
-          </div>
+        <section id="apps" className="hero-panels">
+          <article className="hero-panel light animate-fade-up delay-900">
+            <span>01</span>
+            <h3>iOS route apps</h3>
+            <p>Routekaarten, zoekflows, favorieten, lagen en detailpagina’s.</p>
+          </article>
+          <article className="hero-panel cream animate-fade-up delay-1000">
+            <span>02</span>
+            <h3>Map tools</h3>
+            <p>GPX, kaartstijlen, posterdesign, video en exportflows.</p>
+          </article>
+          <article className="hero-panel dark animate-fade-up delay-1100">
+            <span>03</span>
+            <h3>App Store ready</h3>
+            <p>Van prototype naar GitHub Pages, TestFlight en release.</p>
+          </article>
         </section>
 
         <section id="proces" className="section-shell process-section">
@@ -112,7 +119,7 @@ export default function App() {
           <SectionHeader
             eyebrow="Werk"
             title="Projecten met kaarten, routes en publicatieflows."
-            text="Deze voorbeelden staan nu als content in de site. Later vervang je ze door echte screenshots en links."
+            text="Eerste focus: echte appbeelden, korte cases en duidelijke technische context."
           />
           <div className="project-grid">
             {projects.map((project, index) => (
@@ -125,7 +132,7 @@ export default function App() {
           <p className="eyebrow">Deploy</p>
           <h2>Klaar voor GitHub Pages.</h2>
           <p>
-            De workflow bouwt de React-site met Vite en publiceert de map <code>dist</code> via GitHub Pages. Activeer Pages met GitHub Actions als bron.
+            De workflow bouwt de React-site met Vite en publiceert de map <code>dist</code> via GitHub Pages.
           </p>
           <a className="button primary" href="https://github.com/Equilibriumpress/equilibriumpress/actions">Bekijk Actions</a>
         </section>
