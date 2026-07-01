@@ -1,5 +1,3 @@
-import { waymarkedTrailsMap } from '../assets/waymarkedTrailsMap';
-
 export type Project = {
   title: string;
   type: string;
@@ -15,7 +13,7 @@ export const projects: Project[] = [
     type: 'iOS route app',
     description: 'Een interactieve route-app met Europese wandel- en fietsroutes, kaartlagen, zoekflow, favorieten en detailpagina’s voor routes en etappes.',
     accent: 'route',
-    image: waymarkedTrailsMap,
+    image: '/equilibriumpress/projects/waymarked-trails-map.png',
     metrics: ['Apple Maps + OSM', 'Route layers', 'iOS'],
   },
   {
