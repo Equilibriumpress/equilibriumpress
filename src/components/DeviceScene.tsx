@@ -1,7 +1,13 @@
-import { Float, OrbitControls, RoundedBox } from '@react-three/drei';
+import { Float, OrbitControls, RoundedBox, useTexture } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { SRGBColorSpace } from 'three';
+
+const screenshotPath = '/equilibriumpress/projects/waymarked-trails-map.PNG';
 
 function PhoneModel() {
+  const screenTexture = useTexture(screenshotPath);
+  screenTexture.colorSpace = SRGBColorSpace;
+
   return (
     <Float speed={1.8} rotationIntensity={0.5} floatIntensity={0.6}>
       <group rotation={[0.15, -0.42, 0.02]}>
@@ -9,19 +15,11 @@ function PhoneModel() {
           <meshStandardMaterial color="#101c17" metalness={0.48} roughness={0.28} />
         </RoundedBox>
         <RoundedBox args={[1.88, 3.42, 0.04]} radius={0.13} smoothness={8} position={[0, 0, 0.12]}>
-          <meshStandardMaterial color="#07100c" roughness={0.4} />
+          <meshBasicMaterial map={screenTexture} toneMapped={false} />
         </RoundedBox>
-        <mesh position={[0, -0.25, 0.16]}>
-          <torusGeometry args={[0.74, 0.018, 18, 120]} />
-          <meshStandardMaterial color="#d8ff63" emissive="#8bb63e" emissiveIntensity={0.3} />
-        </mesh>
-        <mesh position={[-0.52, -0.8, 0.18]}>
-          <sphereGeometry args={[0.06, 24, 24]} />
-          <meshStandardMaterial color="#d8ff63" emissive="#d8ff63" emissiveIntensity={0.6} />
-        </mesh>
-        <mesh position={[0.58, 0.45, 0.18]}>
-          <sphereGeometry args={[0.06, 24, 24]} />
-          <meshStandardMaterial color="#80f0c8" emissive="#80f0c8" emissiveIntensity={0.5} />
+        <mesh position={[0, 1.52, 0.16]}>
+          <boxGeometry args={[0.58, 0.12, 0.03]} />
+          <meshStandardMaterial color="#050807" roughness={0.4} />
         </mesh>
       </group>
     </Float>
@@ -38,8 +36,8 @@ export default function DeviceScene() {
         <PhoneModel />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.7} />
       </Canvas>
-      <div className="scene-chip top">React + Vite</div>
-      <div className="scene-chip bottom">GitHub Pages</div>
+      <div className="scene-chip top">Waymarked Trails</div>
+      <div className="scene-chip bottom">iOS route app</div>
     </div>
   );
 }
