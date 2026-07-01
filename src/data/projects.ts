@@ -13,7 +13,7 @@ export const projects: Project[] = [
     type: 'iOS route app',
     description: 'Een interactieve route-app met Europese wandel- en fietsroutes, kaartlagen, zoekflow, favorieten en detailpagina’s voor routes en etappes.',
     accent: 'route',
-    image: '/equilibriumpress/projects/waymarked-trails-map.png',
+    image: '/equilibriumpress/projects/waymarked-trails-map.PNG',
     metrics: ['Apple Maps + OSM', 'Route layers', 'iOS'],
   },
   {
